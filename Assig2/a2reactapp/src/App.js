@@ -39,7 +39,7 @@ function App() {
                                     <Link className="nav-link active" to="/Dashboard" onClick={makeActive}>MPDC Dashboard</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="#" onClick={makeActive}>Report</Link>
+                                    <Link className="nav-link" to="/Dashboard/Report" onClick={makeActive}>Report</Link>
                                 </li>
                             </ul>
                         </div>
