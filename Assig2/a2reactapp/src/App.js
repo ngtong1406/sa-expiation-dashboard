@@ -2,8 +2,16 @@ import logo from './logo.png';
 import './App.css';
 import React, { useState } from 'react';
 import SHA256 from 'crypto-js/sha256';
+import { Link } from 'react-router-dom';
 
 function App() {
+    function makeActive(e) {
+        document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('active'); })
+
+        const element = e.target;
+        element.classList.add('active');
+    }
+
     return (
         <div>
             <header>
@@ -28,13 +36,10 @@ function App() {
                         <div className="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 text-center fs-5 gap-4">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Home</a>
+                                    <Link className="nav-link" to="/Dashboard" onClick={makeActive}>MPDC Dashboard</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Support</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Test</a>
+                                    <Link className="nav-link" to="#" onClick={makeActive}>Report</Link>
                                 </li>
                             </ul>
                         </div>
