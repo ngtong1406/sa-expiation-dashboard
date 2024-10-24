@@ -36,7 +36,7 @@ function App() {
                         <div className="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 text-center fs-5 gap-4">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/Dashboard" onClick={makeActive}>MPDC Dashboard</Link>
+                                    <Link className="nav-link active" to="/Dashboard" onClick={makeActive}>MPDC Dashboard</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="#" onClick={makeActive}>Report</Link>
