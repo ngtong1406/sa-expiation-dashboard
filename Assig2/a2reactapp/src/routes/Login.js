@@ -1,6 +1,7 @@
 ﻿import css from './Login.css';
 import logo from '../logo.png';
 import loginBanner from '../assets/login-banner.jpg';
+import LoginSection from '../components/LoginSection';
 
 function Login() {
     return (
@@ -16,22 +17,7 @@ function Login() {
                         <h2 className="fw-bold login-font">WELCOME BACK,</h2>
                         <p className="text-muted login-font">Please login to continue to use the services.</p>
 
-                        <form action="#" method="post" className="text-start mt-4">
-                            <div className="mb-3">
-                                <label for="username" className="form-label fw-bold login-font">Username</label>
-                                <input type="text" name="username" placeholder="Username" className="form-control login-font" required />
-                            </div>
-                            <div className="mb-3">
-                                <label for="username" className="form-label fw-bold login-font">Password</label>
-                                <input type="password" name="password" placeholder="Password" className="form-control login-font" required />
-                            </div>
-                            <div className="d-flex justify-content-end">
-                                <a href="#" className="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover login-font">Forgot Password?</a>
-                            </div>
-                            <div className="d-grid mx-auto col-12 mt-3">
-                                <button type="submit" className="btn btn-dark login-font">Login</button>
-                            </div>
-                        </form>
+                        <LoginSection />
 
                         <div className="d-grid mx-auto col-12 mt-3">
                             <a href="#" className="btn btn-outline-dark login-font">Sign up!</a>
