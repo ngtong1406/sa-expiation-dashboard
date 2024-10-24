@@ -32,6 +32,7 @@ function Login() {
                                 <button type="submit" className="btn btn-dark login-font">Login</button>
                             </div>
                         </form>
+
                         <div className="d-grid mx-auto col-12 mt-3">
                             <a href="#" className="btn btn-outline-dark login-font">Sign up!</a>
                         </div>

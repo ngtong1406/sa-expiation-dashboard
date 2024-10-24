@@ -1,9 +1,6 @@
-﻿/*.login-font {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}*/
-
-body {
+﻿body {
     background-color: #eeeeee;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .login-image {
