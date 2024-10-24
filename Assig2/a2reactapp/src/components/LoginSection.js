@@ -7,13 +7,24 @@ function LoginSection() {
     const [userName, setUserName] = useState('');
     const [userPassword, setPassword] = useState('');
 
-    function useLogin() {
-        useEffect(() => {
-            fetch(`http://localhost:5147/api/Login?userName=${userName}&passwordHash${userPassword}`)
-                .then(response => response.json())
-                .then(data => setStatus(data))
-                .catch(err => { console.log(err) });
-        }, userName, userPassword);
+    useEffect(() => {
+        fetch(`http://localhost:5147/api/Login?userName=${userName}&passwordHash=${userPassword}`)
+            .then(response => response.json())
+            .then(data => setStatus(data))
+            .catch(err => { console.log('Something:' + err) });
+    }, [userName, userPassword]);
+
+    if (loginStatus == true) {
+        window.location.href = "/";
+    }
+
+    function onSubmit(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        setUserName(formData.get('username'));
+        setPassword(sha256(formData.get('password')));
     }
 
     function searchUserNameAndPassword() {
@@ -25,7 +36,7 @@ function LoginSection() {
     }
 
     return (
-        <form action="/Login" method="post" className="text-start mt-4">
+        <form action="/Login" method="post" onSubmit={onSubmit} className="text-start mt-4">
             <div className="mb-3">
                 <label htmlFor="username" className="form-label fw-bold login-font">Username</label>
                 <input type="text" name="username" placeholder="Username" className="form-control login-font" required />
@@ -38,7 +49,7 @@ function LoginSection() {
                 <a href="#" className="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover login-font">Forgot Password?</a>
             </div>
             <div className="d-grid mx-auto col-12 mt-3">
-                <button type="button" className="btn btn-dark login-font" onClick={searchUserNameAndPassword}>Login</button>
+                <button type="submit" className="btn btn-dark login-font" onClick={searchUserNameAndPassword}>Login</button>
             </div>
         </form>
     );
