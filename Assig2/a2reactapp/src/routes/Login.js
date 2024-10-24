@@ -4,7 +4,11 @@ function Login() {
     return (
         <div className="container mt-5 mb-5">
             <div className="row">
-                <div className="col-6 d-flex justify-content-center align-items-center bg-white shadow-sm border border-end-0 border-secondary">
+                <div className="col-6 d-flex justify-content-center align-items-center bg-white shadow-sm border border-end-0 border-secondary login-image-container">
+                    <img src="extra_images/login_photo.jpeg" className="login-image" />
+                </div>
+
+                <div className="col-6 d-flex justify-content-center align-items-center bg-white shadow-sm border border-start-0 border-secondary">
                     <div className="text-center">
                         <h2 className="fw-bold login-font">WELCOME BACK,</h2>
                         <p className="text-muted login-font">Please login to continue to use the services.</p>
@@ -29,10 +33,6 @@ function Login() {
                             <a href="#" className="btn btn-outline-dark login-font">Sign up!</a>
                         </div>
                     </div>
-                </div>
-
-                <div className="col-6 d-flex justify-content-center align-items-center bg-white shadow-sm border border-start-0 border-secondary login-image-container">
-                    <img src="extra_images/login_photo.jpeg" className="login-image" />
                 </div>
             </div>
         </div>
