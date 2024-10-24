@@ -46,9 +46,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="a2reactapp\src\components\" />
-    <Folder Include="a2reactapp\src\assets\" />
-  </ItemGroup>
-
 </Project>
