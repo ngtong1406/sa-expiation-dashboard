@@ -15,7 +15,7 @@ function LoginSection() {
     }, [userName, userPassword]);
 
     if (isLoggedIn == true) {
-        window.location.href = "/";
+        window.location.href = "/Dashboard";
     }
 
     function onSubmit(e) {
