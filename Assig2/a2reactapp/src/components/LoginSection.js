@@ -23,6 +23,7 @@ function LoginSection() {
 
         const form = e.target;
         const formData = new FormData(form);
+
         setUserName(formData.get('username'));
         setPassword(sha256(formData.get('password')));
     }
@@ -37,6 +38,7 @@ function LoginSection() {
 
     return (
         <form action="/Login" method="post" onSubmit={onSubmit} className="text-start mt-4">
+            <div className="mb-3 text-danger">{loginStatus ? "" : "Wrong username or password! Please try again."}</div>
             <div className="mb-3">
                 <label htmlFor="username" className="form-label fw-bold login-font">Username</label>
                 <input type="text" name="username" placeholder="Username" className="form-control login-font" required />
