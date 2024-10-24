@@ -9,23 +9,17 @@ function LoginSection() {
 
     useEffect(() => {
         fetch(`http://localhost:5147/api/Login?userName=${userName}&passwordHash=${userPassword}`)
-            .then(response => response.json())
+            .then(response => { return response.json() })
             .then(data => setStatus(data))
             .catch(err => { console.log('Something:' + err) });
     }, [userName, userPassword]);
 
-    if (isLoggedIn == true) {
+    if (isLoggedIn === true) {
         window.location.href = "/Dashboard";
     }
 
     function onSubmit(e) {
         e.preventDefault();
-
-        const form = e.target;
-        const formData = new FormData(form);
-
-        setUserName(formData.get('username'));
-        setPassword(sha256(formData.get('password')));
     }
 
     function searchUserNameAndPassword() {
@@ -38,7 +32,7 @@ function LoginSection() {
 
     return (
         <form action="/Login" method="post" onSubmit={onSubmit} className="text-start mt-4">
-            <div className="mb-3 text-danger">{isLoggedIn ? "" : "Wrong username or password! Please try again."}</div>
+            <div className="mb-3 text-danger">{(!isLoggedIn) ? "Wrong username or password! Please try again." : ""}</div>
             <div className="mb-3">
                 <label htmlFor="username" className="form-label fw-bold login-font">Username</label>
                 <input type="text" name="username" placeholder="Username" className="form-control login-font" required />
