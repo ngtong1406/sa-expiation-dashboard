@@ -3,7 +3,7 @@ import '../routes/Login.css';
 import sha256 from 'crypto-js/sha256';
 
 function LoginSection() {
-    const [loginStatus, setStatus] = useState(false);
+    const [isLoggedIn, setStatus] = useState(false);
     const [userName, setUserName] = useState('');
     const [userPassword, setPassword] = useState('');
 
@@ -14,7 +14,7 @@ function LoginSection() {
             .catch(err => { console.log('Something:' + err) });
     }, [userName, userPassword]);
 
-    if (loginStatus == true) {
+    if (isLoggedIn == true) {
         window.location.href = "/";
     }
 
@@ -38,7 +38,7 @@ function LoginSection() {
 
     return (
         <form action="/Login" method="post" onSubmit={onSubmit} className="text-start mt-4">
-            <div className="mb-3 text-danger">{loginStatus ? "" : "Wrong username or password! Please try again."}</div>
+            <div className="mb-3 text-danger">{isLoggedIn ? "" : "Wrong username or password! Please try again."}</div>
             <div className="mb-3">
                 <label htmlFor="username" className="form-label fw-bold login-font">Username</label>
                 <input type="text" name="username" placeholder="Username" className="form-control login-font" required />
