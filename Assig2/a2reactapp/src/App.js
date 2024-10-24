@@ -2,7 +2,7 @@ import logo from './logo.png';
 import './App.css';
 import React, { useState } from 'react';
 import SHA256 from 'crypto-js/sha256';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 function App() {
     function makeActive(e) {
@@ -46,6 +46,8 @@ function App() {
                     </div>
                 </nav>
             </header>
+
+            <Outlet />
         </div>
     );
 }
