@@ -47,8 +47,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="a2reactapp\components\" />
-    <Folder Include="a2reactapp\routes\" />
+    <Folder Include="a2reactapp\src\components\" />
+    <Folder Include="a2reactapp\src\assets\" />
   </ItemGroup>
 
 </Project>
