@@ -15,6 +15,7 @@ function RegisterSection() {
     }, [userName, userPassword]);
 
     if (registerStatus === true) {
+        alert("You have successfully registered an account. You're now logged in!");
         window.location.href = '/Dashboard';
     }
 
@@ -32,6 +33,7 @@ function RegisterSection() {
 
     return (
         <form action="/Register" onSubmit={onSubmit} method="post" className="text-start mt-4">
+            <div className="mb-3 text-danger">{(!registerStatus) ? "This account has already existed! Please try a different one." : ""}</div>
             <div className="mb-3">
                 <label htmlFor="username" className="form-label fw-bold login-font">Username</label>
                 <input type="text" name="username" placeholder="Enter your desired username" className="form-control login-font" required />
