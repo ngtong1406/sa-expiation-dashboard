@@ -19,8 +19,8 @@ function Login() {
 
                         <LoginSection />
 
-                        <div className="d-grid mx-auto col-12 mt-3">
-                            <a href="#" className="btn btn-outline-dark login-font">Sign up!</a>
+                        <div className="mt-4">
+                            Don't have an account yet? <a href="/Register" className="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover login-font">Sign up now!</a>
                         </div>
                     </div>
                 </div>

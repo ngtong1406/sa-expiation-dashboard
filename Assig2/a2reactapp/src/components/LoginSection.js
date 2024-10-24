@@ -47,9 +47,6 @@ function LoginSection() {
                 <label htmlFor="password" className="form-label fw-bold login-font">Password</label>
                 <input type="password" name="password" placeholder="Password" className="form-control login-font" required />
             </div>
-            <div className="d-flex justify-content-end">
-                <a href="#" className="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover login-font">Forgot Password?</a>
-            </div>
             <div className="d-grid mx-auto col-12 mt-3">
                 <button type="submit" className="btn btn-dark login-font" onClick={searchUserNameAndPassword}>Login</button>
             </div>
