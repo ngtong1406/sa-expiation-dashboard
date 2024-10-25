@@ -1,4 +1,5 @@
 ﻿import { useState } from 'react';
+import SuburbDropdown from "../components/SuburbDropdown";
 
 function OffenceSearch() {
     const [cameraList, setList] = useState([]);
@@ -18,7 +19,11 @@ function OffenceSearch() {
     }
 
     return (
-        <form method="post" action="/Dashboard">
+        <div id="offenceSearch">
+            <form method="post" action="/Dashboard" className="d-flex justify-content-center align-items-center">
+                <SuburbDropdown />
+            </form>
+
             <div className="table-responsive">
                 <div className="table">
                     <thead>
@@ -45,7 +50,7 @@ function OffenceSearch() {
                     </tbody>
                 </div>
             </div>
-        </form>
+        </div>
     );
 }
 
