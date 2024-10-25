@@ -11,7 +11,7 @@ function SuburbDropdown() {
     }, []);
 
     return (
-        <select id="suburbList" className="form-control border border-secondary-subtle shadow-sm" style={{ width: "25%" }}>
+        <select name="suburb" className="form-control border border-secondary-subtle shadow-sm" style={{ width: "25%" }}>
             <option value="" selected>All Suburbs...</option>
             {suburbList.map(suburb => (
                 <option value={suburb}>{suburb}</option>

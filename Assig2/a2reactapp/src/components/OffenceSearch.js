@@ -20,7 +20,7 @@ function OffenceSearch() {
 
     return (
         <div id="offenceSearch">
-            <form method="post" action="/Dashboard" className="d-flex justify-content-center align-items-center">
+            <form method="post" action="/Dashboard" onSubmit={onSubmit} className="d-flex justify-content-center align-items-center">
                 <SuburbDropdown />
             </form>
 
