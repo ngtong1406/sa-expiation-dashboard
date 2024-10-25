@@ -3,14 +3,13 @@ import SuburbDropdown from "../components/SuburbDropdown";
 
 function OffenceSearch() {
     const [cameraList, setList] = useState([]);
-    const [suburb, setSuburb] = useState('');
 
     function onSubmit(e) {
         e.preventDefault();
 
         const form = e.target;
         const formData = new FormData(form);
-        setSuburb(formData.get('suburb'));
+        const suburb = formData.get('suburb');
 
         fetch(`http://localhost:5147/api/Get_ListCamerasInSuburb?suburb=${suburb}&cameraIdsOnly=false`)
             .then(response => { return response.json() })
@@ -22,10 +21,11 @@ function OffenceSearch() {
         <div id="offenceSearch">
             <form method="post" action="/Dashboard" onSubmit={onSubmit} className="d-flex justify-content-center align-items-center">
                 <SuburbDropdown />
+                <button type="submit" className="btn btn-primary">Search</button>
             </form>
 
-            <div className="table-responsive">
-                <div className="table">
+            <div className="table-responsive mt-3">
+                <table className="table">
                     <thead>
                         <tr>
                             <th>Location ID</th>
@@ -46,9 +46,9 @@ function OffenceSearch() {
                                 <td>{camera.roadName}</td>
                                 <td>{camera.roadType}</td>
                             </tr>
-                        ))};
+                        ))}
                     </tbody>
-                </div>
+                </table>
             </div>
         </div>
     );
