@@ -1,6 +1,6 @@
 ﻿import { useState } from 'react';
 
-function OffenceTable() {
+function OffenceSearch() {
     const [cameraList, setList] = useState([]);
     const [suburb, setSuburb] = useState('');
 
@@ -18,7 +18,7 @@ function OffenceTable() {
     }
 
     return (
-        <div className="container mt-4 mb-4">
+        <form method="post" action="/Dashboard">
             <div className="table-responsive">
                 <div className="table">
                     <thead>
@@ -45,8 +45,8 @@ function OffenceTable() {
                     </tbody>
                 </div>
             </div>
-        </div>
+        </form>
     );
 }
 
-export default OffenceTable;
+export default OffenceSearch;
