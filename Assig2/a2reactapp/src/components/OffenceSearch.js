@@ -8,6 +8,10 @@ function OffenceSearch() {
     const [cameraList, setList] = useState([]);
     const [suburb, setSuburb] = useState('');
 
+    /*
+    The code below is just an example table that serves testing purposes and is meant to show what the 
+    final table will look like and how it will behave in Part B when the searching filters are fully functional.
+    */
     useEffect(() => {
         if (suburb != "" || suburb != null) {
             fetch(`http://localhost:5147/api/Get_ListCamerasInSuburb?suburb=${suburb}&cameraIdsOnly=false`)
@@ -74,6 +78,10 @@ function OffenceSearch() {
                 <button type="submit" className="btn btn-primary">Search</button>
             </form>
 
+            {/*
+            The code below is just an example table that serves testing purposes and is meant to show what the 
+            final table will look like and how it will behave in Part B when the searching filters are fully functional.
+            */}
             {cameraList.length == 0 ? (
                 <div className="text-center text-muted mt-4">
                     Nothing here yet. Try searching with a description or choosing one of the filters above.
