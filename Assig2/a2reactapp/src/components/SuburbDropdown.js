@@ -14,7 +14,7 @@ function SuburbDropdown() {
         <select name="suburb" className="form-control border border-secondary-subtle shadow-sm" style={{ width: "25%" }}>
             <option value="">All Suburbs...</option>
             {suburbList.map(suburb => (
-                <option value={suburb}>{suburb}</option>
+                <option key={suburb} value={suburb}>{suburb}</option>
             ))};
         </select>
     );
