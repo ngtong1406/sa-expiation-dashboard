@@ -2,6 +2,7 @@
 import SuburbDropdown from "../components/SuburbDropdown";
 import DescriptionSearch from './DescriptionSearchbox';
 import ExpiationDatePicker from './ExpiationDatePicker';
+import TypeCodeRadio from './TypeCodeRadio';
 
 function OffenceSearch() {
     const [cameraList, setList] = useState([]);
@@ -61,10 +62,15 @@ function OffenceSearch() {
                     <div className="col-8 mb-3">
                         <ExpiationDatePicker />
                     </div>
+
+                    <div className="col-4 mb-3">
+                        providing a camera type code:
+                    </div>
+                    <div className="col-8 mb-3">
+                        <TypeCodeRadio />
+                    </div>
                 </div>
-                
-                
-                
+
                 <button type="submit" className="btn btn-primary">Search</button>
             </form>
 
