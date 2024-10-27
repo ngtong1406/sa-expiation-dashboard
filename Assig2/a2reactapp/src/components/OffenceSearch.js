@@ -38,7 +38,7 @@ function OffenceSearch() {
 
             {cameraList.length == 0 ? (
                 <div className="text-center text-muted mt-4">
-                    Nothing here yet. Try looking for a description or choose one of the filters above.
+                    Nothing here yet. Try searching with a description or choosing one of the filters above.
                 </div>
             ) : (
                 <div className="table-responsive bg-white rounded border border-secondary-subtle shadow-sm mt-3 p-3">
