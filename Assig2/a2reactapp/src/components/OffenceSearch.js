@@ -31,7 +31,7 @@ function OffenceSearch() {
 
     return (
         <div id="offenceSearch">
-            <form method="post" action="/Dashboard" onSubmit={onSubmit} className="d-flex justify-content-center align-items-center">
+            <form method="post" action="/Dashboard" onSubmit={onSubmit} className="d-flex justify-content-center align-items-center gap-3">
                 <SuburbDropdown />
                 <button type="submit" className="btn btn-primary">Search</button>
             </form>
