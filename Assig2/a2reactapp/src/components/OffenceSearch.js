@@ -33,10 +33,38 @@ function OffenceSearch() {
 
     return (
         <div id="offenceSearch">
-            <form method="post" action="/Dashboard" onSubmit={onSubmit} className="d-flex justify-content-center align-items-center gap-3">
-                <DescriptionSearch />
-                <SuburbDropdown />
-                <ExpiationDatePicker />
+            <form method="post" action="/Dashboard" onSubmit={onSubmit}>
+                <div className="text-center fw-bold fs-4">Advanced Search</div>
+                <div className="text-muted mt-4 fw-bold fs-5">
+                    Find an MPDC location via...
+                </div>
+                <hr />
+
+                <div className="row row-cols-2">
+                    <div className="col-4 mb-3">
+                        searching for an offence description:
+                    </div>
+                    <div className="col-8 mb-3">
+                        <DescriptionSearch />
+                    </div>
+
+                    <div className="col-4 mb-3">
+                        providing a related suburb:
+                    </div>
+                    <div className="col-8 mb-3">
+                        <SuburbDropdown />
+                    </div>
+
+                    <div className="col-4 mb-3">
+                        providing a date range:
+                    </div>
+                    <div className="col-8 mb-3">
+                        <ExpiationDatePicker />
+                    </div>
+                </div>
+                
+                
+                
                 <button type="submit" className="btn btn-primary">Search</button>
             </form>
 
