@@ -37,7 +37,9 @@ function OffenceSearch() {
             </form>
 
             {cameraList.length == 0 ? (
-                <h1>Nothing just yet.</h1>
+                <div className="text-center text-muted mt-4">
+                    Nothing here yet. Try looking for a description or choose one of the filters above.
+                </div>
             ) : (
                 <div className="table-responsive bg-white rounded border border-secondary-subtle shadow-sm mt-3 p-3">
                     <table className="table table-hover table-striped">
