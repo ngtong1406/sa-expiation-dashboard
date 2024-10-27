@@ -39,13 +39,13 @@ function OffenceSearch() {
             {cameraList.length == 0 ? (
                 <h1>Nothing just yet.</h1>
             ) : (
-                <div className="table-responsive mt-3">
-                    <table className="table">
+                <div className="table-responsive bg-white rounded border border-secondary-subtle shadow-sm mt-3 p-3">
+                    <table className="table table-hover table-striped">
                         <thead>
                             <tr>
                                 <th>Location ID</th>
-                                <th>Camera Type Code</th>
-                                <th>Camera Type Name</th>
+                                <th>Type Code</th>
+                                <th>Type Name</th>
                                 <th>Suburb</th>
                                 <th>Road Name</th>
                                 <th>Road Type</th>
@@ -53,7 +53,7 @@ function OffenceSearch() {
                         </thead>
                         <tbody>
                             {cameraList.map(camera => (
-                                    <tr key={camera.locationId}>
+                                <tr key={[camera.locationId, camera.suburb]}>
                                     <td>{camera.locationId}</td>
                                     <td>{camera.cameraTypeCode}</td>
                                     <td>{camera.cameraType1}</td>
