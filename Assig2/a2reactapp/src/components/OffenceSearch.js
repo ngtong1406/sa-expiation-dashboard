@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import SuburbDropdown from "../components/SuburbDropdown";
+import DescriptionSearch from './DescriptionSearchbox';
 
 function OffenceSearch() {
     const [cameraList, setList] = useState([]);
@@ -32,6 +33,7 @@ function OffenceSearch() {
     return (
         <div id="offenceSearch">
             <form method="post" action="/Dashboard" onSubmit={onSubmit} className="d-flex justify-content-center align-items-center gap-3">
+                <DescriptionSearch />
                 <SuburbDropdown />
                 <button type="submit" className="btn btn-primary">Search</button>
             </form>
