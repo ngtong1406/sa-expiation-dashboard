@@ -4,9 +4,8 @@ import ExpiationDatePicker from './ExpiationDatePicker';
 import TypeCodeRadio from './TypeCodeRadio';
 import ListCameraDropdown from './ListCameraDropdown';
 
-function OffenceSearch() {
+function OffenceSearch({ suburb }) {
     const [cameraList, setList] = useState([]);
-    const [suburb, setSuburb] = useState('');
     const [offenceDescription, setDescription] = useState('');
 
     function onSubmit(e) {
@@ -14,10 +13,6 @@ function OffenceSearch() {
 
         const form = e.target;
         const formData = new FormData(form);
-
-        let suburb = formData.get('suburb');
-        setSuburb(suburb);
-        console.log(suburb);
 
         let description = formData.get('descriptionSearch')
         setDescription(description);
