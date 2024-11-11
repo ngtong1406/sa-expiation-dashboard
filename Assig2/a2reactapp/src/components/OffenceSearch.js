@@ -23,6 +23,21 @@ function OffenceSearch({ suburb }) {
         return Math.floor(currentDate.getTime() / 1000);
     }
 
+    // This function accepts a list of offence codes as parameters and returns a string of URL-based list of those codes.
+    function offenceListToParameters(offenceList) {
+        let finalString = "";
+
+        if (offenceList.length <= 0) {
+            return finalString;
+        }
+
+        offenceList.forEach((offenceCode) => {
+            finalString += (finalString.length > 0 ? "&" : "") + `offenceCodes=${offenceCode}`
+        });
+
+        return finalString;
+    }
+
     function onSubmit(e) {
         e.preventDefault();
 
