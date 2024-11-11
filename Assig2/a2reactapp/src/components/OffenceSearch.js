@@ -26,7 +26,7 @@ function OffenceSearch({ suburb }) {
             <form method="post" action="/Dashboard" onSubmit={onSubmit}>
                 <div className="text-center fw-bold fs-4">Advanced Search</div>
                 <div className="text-center text-muted fs-6">
-                    Please note that the field with <span className="text-danger fw-bold">*</span> indicates a required input.
+                    Please note that a field with <span className="text-danger fw-bold">*</span> indicates a required input.
                 </div>
                 <div className="text-center text-muted fs-6">Continue your search by providing some searching criteria as below.</div>
                 <div className="d-flex justify-content-between text-muted mt-4 fw-bold fs-5">
