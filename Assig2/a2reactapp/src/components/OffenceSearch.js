@@ -40,7 +40,7 @@ function OffenceSearch({ suburb }) {
 
                 <div className="row row-cols-2">
                     <div className="col-4 mb-3">
-                        searching for an offence description (<span className="text-danger fw-bold">*</span>):
+                        searching for an offence description:
                     </div>
                     <div className="col-8 mb-3">
                         <DescriptionSearch />
