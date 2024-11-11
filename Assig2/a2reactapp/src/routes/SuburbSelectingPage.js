@@ -31,7 +31,7 @@ export default function SuburbSelectingPage() {
                             <option key={suburb} value={suburb}>{suburb}</option>
                         ))};
                     </select>
-                    <Link to="/Dashboard" className="btn btn-primary">Start searching</Link>
+                    <Link to={"/Dashboard/" + chosenSuburb} className="btn btn-primary">Start searching</Link>
                 </div>
             </div>
         </>
