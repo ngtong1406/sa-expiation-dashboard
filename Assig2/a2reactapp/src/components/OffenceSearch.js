@@ -41,6 +41,14 @@ function OffenceSearch({ suburb }) {
         let sDate = convertDateToUnixTime(formData.get('startDate'));
         setStartDate(sDate);
         console.log(sDate);
+
+        let eDate = convertDateToUnixTime(formData.get('endDate'));
+        setEndDate(eDate);
+        console.log(eDate);
+
+        let cameraType = formData.get('typeCode');
+        setTypeCode(cameraType);
+        console.log(cameraType);
     }
 
     return (
