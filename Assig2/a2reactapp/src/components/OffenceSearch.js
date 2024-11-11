@@ -8,11 +8,13 @@ import ListCameraDropdown from './ListCameraDropdown';
 
 function OffenceSearch({ suburb }) {
 
-    const [offenceDescription, setDescription] = useState('');
-    const [cameraLocationId, setLocationId] = useState(0);
-    const [startDate, setStartDate] = useState(0);
-    const [endDate, setEndDate] = useState(2147483647); // 2147483647 is the maximum integer value of Int32 (C#)
-    const [cameraTypeCode, setTypeCode] = useState('');
+    const [expiationList, setList] = useState([]);
+
+    //const [offenceDescription, setDescription] = useState('');
+    //const [cameraLocationId, setLocationId] = useState(0);
+    //const [startDate, setStartDate] = useState(0);
+    //const [endDate, setEndDate] = useState(2147483647); // 2147483647 is the maximum integer value of Int32 (C#)
+    //const [cameraTypeCode, setTypeCode] = useState('');
 
     // Code from: Ashik N. (2023)
     // Source link: https://nesin.io/blog/javascript-date-to-unix-timestamp
@@ -31,24 +33,24 @@ function OffenceSearch({ suburb }) {
         const formData = new FormData(form);
 
         let description = formData.get('descriptionSearch');
-        setDescription(description);
         console.log(description);
 
         let locationId = formData.get('locationId');
-        setLocationId(locationId);
         console.log(locationId);
 
-        let sDate = convertDateToUnixTime(formData.get('startDate'));
-        setStartDate(sDate);
-        console.log(sDate);
+        let startDate = convertDateToUnixTime(formData.get('startDate'));
+        console.log(startDate);
 
-        let eDate = convertDateToUnixTime(formData.get('endDate'));
-        setEndDate(eDate);
-        console.log(eDate);
+        let endDate = convertDateToUnixTime(formData.get('endDate'));
+        console.log(endDate);
 
         let cameraType = formData.get('typeCode');
-        setTypeCode(cameraType);
         console.log(cameraType);
+
+        fetch(`http://localhost:5147/api/Get_ExpiationsForLocationId?locationId=${locationId}&cameraTypeCode=${cameraType}&startTime=${startDate}&endTime=${endDate}`)
+            .then(response => { return response.json() })
+            .then(data => { setList(data); console.log(data) })
+            .catch(err => "Could not retrieve the expiation data: " + err);
     }
 
     return (
