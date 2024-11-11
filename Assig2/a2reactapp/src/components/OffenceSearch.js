@@ -9,6 +9,7 @@ import ListCameraDropdown from './ListCameraDropdown';
 function OffenceSearch({ suburb }) {
 
     const [expiationList, setList] = useState([]);
+    const [offenceCodeList, setCodeList] = useState([]);
 
     // Code from: Ashik N. (2023)
     // Source link: https://nesin.io/blog/javascript-date-to-unix-timestamp
@@ -30,6 +31,10 @@ function OffenceSearch({ suburb }) {
 
         let description = formData.get('descriptionSearch');
         console.log(description);
+        fetch(`http://localhost:5147/api/Get_SearchOffencesByDescription?searchTerm=${description}&offenceCodesOnly=true`)
+            .then(response => { return response.json() })
+            .then(data => setCodeList(data))
+            .catch(err => { console.log("Could not retrieve the offence data: " + err) });
 
         let locationId = formData.get('locationId');
         console.log(locationId);
