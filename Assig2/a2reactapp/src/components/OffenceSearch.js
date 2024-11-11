@@ -37,7 +37,7 @@ function OffenceSearch({ suburb }) {
                     </div>
 
                     <div className="col-4 mb-3">
-                        providing a related suburb:
+                        providing a specific camera location:
                     </div>
                     <div className="col-8 mb-3">
                         <ListCameraDropdown suburb={suburb} />
