@@ -7,8 +7,20 @@ import TypeCodeRadio from './TypeCodeRadio';
 import ListCameraDropdown from './ListCameraDropdown';
 
 function OffenceSearch({ suburb }) {
-    const [cameraList, setList] = useState([]);
+
     const [offenceDescription, setDescription] = useState('');
+    const [cameraLocationId, setLocationId] = useState(0);
+    const [startDate, setStartDate] = useState(0);
+    const [endDate, setEndDate] = useState(2147483647); // 2147483647 is the maximum integer value of Int32 (C#)
+    const [cameraTypeCode, setTypeCode] = useState('');
+
+    // Code from: Ashik N. (2023)
+    // Source link: https://nesin.io/blog/javascript-date-to-unix-timestamp
+    function convertDateToUnixTime(dateTime) {
+        const currentDate = new Date(dateTime);
+
+        return Math.floor(currentDate.getTime() / 1000);
+    }
 
     function onSubmit(e) {
         e.preventDefault();
@@ -21,13 +33,12 @@ function OffenceSearch({ suburb }) {
         console.log(description);
 
         let locationId = formData.get('locationId')
-        setDescription(locationId);
         console.log(locationId);
     }
 
     return (
         <div id="offenceSearch">
-            <form method="post" action="/Dashboard" onSubmit={onSubmit}>
+            <form method="post" action={"/Dashboard/" + suburb} onSubmit={onSubmit}>
                 <div className="text-center fw-bold fs-4">Advanced Search</div>
                 <div className="text-center text-muted fs-6">
                     Please note that a field with <span className="text-danger fw-bold">*</span> indicates a required input.
