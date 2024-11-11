@@ -9,11 +9,16 @@ export default function ListCameraDropdown({ suburb }) {
             .then(response => { return response.json() })
             .then(data => setLocationList(data))
             .catch(err => { console.log("Could not retrieve the camera locations in the dropdown: " + err) })
-    }, [suburb])
+    }, [suburb]) // Fetches every time the provided suburb changes.
 
     return (
         <>
-            
+            <select name="locationId" className="form-control border border-secondary-subtle shadow-sm">
+                <option value="">Available Camera Locations...</option>
+                {cameraLocationList.map((location) => (
+                    <option key={location.locationId} value={location.locationId}>{location.roadName}</option>
+                ))}
+            </select>
         </>
     )
 }
