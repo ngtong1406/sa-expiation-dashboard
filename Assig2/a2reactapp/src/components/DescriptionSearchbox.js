@@ -14,7 +14,7 @@ export default function DescriptionSearch() {
 
     return (
         <>
-            <input name="descriptionSearch" placeholder="Search for an offence description..." autoComplete="off" type="text" className="form-control border border-secondary-subtle shadow-sm" list="offenceSuggestions" />
+            <input name="descriptionSearch" placeholder="Search for an offence description..." autoComplete="off" type="text" className="form-control border border-secondary-subtle shadow-sm" list="offenceSuggestions" required />
             {offenceList.length > 0 ? 
                 <datalist id="offenceSuggestions">
                     {offenceList.map((offence) => (

@@ -13,7 +13,7 @@ export default function ListCameraDropdown({ suburb }) {
 
     return (
         <>
-            <select name="locationId" className="form-control border border-secondary-subtle shadow-sm">
+            <select name="locationId" className="form-control border border-secondary-subtle shadow-sm" required>
                 <option value="">Available Camera Locations...</option>
                 {cameraLocationList.map((location) => (
                     <option key={location.locationId} value={location.locationId}>{location.roadName}</option>
