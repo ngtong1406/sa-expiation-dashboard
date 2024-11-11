@@ -44,12 +44,14 @@ function OffenceSearch({ suburb }) {
         const formData = new FormData(form);
 
         let description = formData.get('descriptionSearch');
-        console.log(description);
+        let offenceUrl = '';
 
+        // This is a chaining fetch call, which is an optimised version of the nested fetch requests from the old code.
+        // The solution was found on StackOverFlow: https://stackoverflow.com/questions/40981040/using-a-fetch-inside-another-fetch-in-javascript
         fetch(`http://localhost:5147/api/Get_SearchOffencesByDescription?searchTerm=${description}&offenceCodesOnly=true`)
-            .then(response => { return response.json() })
+            .then(offenceResponse => { return offenceResponse.json() })
             .then(data => {
-                let offenceUrl = (description.length > 0 ? offenceListToParameters(data) : "");
+                offenceUrl = (description.length > 0 ? offenceListToParameters(data) : "");
 
                 let locationId = formData.get('locationId');
 
@@ -59,12 +61,14 @@ function OffenceSearch({ suburb }) {
 
                 let cameraType = formData.get('typeCode');
 
-                fetch(`http://localhost:5147/api/Get_ExpiationsForLocationId?locationId=${locationId}&cameraTypeCode=${cameraType}&startTime=${startDate}&endTime=${endDate}&${offenceUrl}`)
-                    .then(response => { return response.json() })
-                    .then(data => { setList(data); console.log(data) })
-                    .catch(err => "Could not retrieve the expiation data: " + err);
+                return fetch(`http://localhost:5147/api/Get_ExpiationsForLocationId?locationId=${locationId}&cameraTypeCode=${cameraType}&startTime=${startDate}&endTime=${endDate}&${offenceUrl}`);
             })
-            .catch(err => { console.log("Could not retrieve the offence data: " + err) });
+            .then(expResponse => { return expResponse.json() })
+            .then(data => {
+                setList(data);
+                console.log(data);
+            })
+            .catch(err => { console.log("Could not retrieve expiation data: " + err) })
     }
 
     return (
