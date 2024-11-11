@@ -5,13 +5,14 @@ import DescriptionSearch from './DescriptionSearchbox';
 import ExpiationDatePicker from './ExpiationDatePicker';
 import TypeCodeRadio from './TypeCodeRadio';
 import ListCameraDropdown from './ListCameraDropdown';
+import ExpiationTable from './ExpiationTable';
 
 function OffenceSearch({ suburb }) {
 
     const [expiationList, setList] = useState([]);
 
-    // Code from: Ashik N. (2023)
-    // Source link: https://nesin.io/blog/javascript-date-to-unix-timestamp
+    // Coding solution adapted from: Ashik N. (2023)
+    // Reference link: https://nesin.io/blog/javascript-date-to-unix-timestamp
     function convertDateToUnixTime(dateTime, isEndDate = false) {
         if (!dateTime) {
             return (isEndDate ? 2147483647 : 0)
@@ -123,6 +124,8 @@ function OffenceSearch({ suburb }) {
                     <button type="submit" className="btn btn-primary">Search</button>
                 </div>
             </form>
+
+            <ExpiationTable expiationList={expiationList} />
 
             {/**/}{/*
             */}{/*The code below is just an example table that serves testing purposes and is meant to show what the */}{/*
