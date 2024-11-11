@@ -20,7 +20,7 @@
     return (
         <div id="typeCodeRadio" className="d-flex gap-3 bg-white rounded border border-secondary-subtle shadow-sm p-2 px-4">
             <div className="form-check form-check-inline">
-                <input className="form-check-input" type="radio" name="typeCode" id="code1" value="F" onClick={revealButton} />
+                <input className="form-check-input" type="radio" name="typeCode" id="code1" value="F" onClick={revealButton} required />
                 <label className="form-check-label" htmlFor="code1">F</label>
             </div>
             <div className="form-check form-check-inline">

@@ -19,6 +19,10 @@ function OffenceSearch({ suburb }) {
         let description = formData.get('descriptionSearch')
         setDescription(description);
         console.log(description);
+
+        let locationId = formData.get('locationId')
+        setDescription(locationId);
+        console.log(locationId);
     }
 
     return (
@@ -61,7 +65,7 @@ function OffenceSearch({ suburb }) {
                     </div>
 
                     <div className="col-4 mb-3">
-                        providing a camera type code:
+                        providing a camera type code (<span className="text-danger fw-bold">*</span>):
                     </div>
                     <div className="col-8 mb-3">
                         <TypeCodeRadio />
