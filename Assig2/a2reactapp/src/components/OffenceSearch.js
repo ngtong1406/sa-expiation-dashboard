@@ -17,6 +17,8 @@ function OffenceSearch({ suburb }) {
     // Code from: Ashik N. (2023)
     // Source link: https://nesin.io/blog/javascript-date-to-unix-timestamp
     function convertDateToUnixTime(dateTime) {
+        if (!dateTime) { return 0 }
+
         const currentDate = new Date(dateTime);
 
         return Math.floor(currentDate.getTime() / 1000);
@@ -28,12 +30,17 @@ function OffenceSearch({ suburb }) {
         const form = e.target;
         const formData = new FormData(form);
 
-        let description = formData.get('descriptionSearch')
+        let description = formData.get('descriptionSearch');
         setDescription(description);
         console.log(description);
 
-        let locationId = formData.get('locationId')
+        let locationId = formData.get('locationId');
+        setLocationId(locationId);
         console.log(locationId);
+
+        let sDate = convertDateToUnixTime(formData.get('startDate'));
+        setStartDate(sDate);
+        console.log(sDate);
     }
 
     return (
