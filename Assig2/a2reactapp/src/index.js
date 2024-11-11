@@ -8,15 +8,17 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 import Dashboard from './routes/Dashboard';
 import Report from './routes/Report';
+import SuburbSelectingPage from './routes/SuburbSelectingPage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Routes>
-                <Route path="/Dashboard" element={<App />}>
-                    <Route path="" element={<Dashboard />} />
-                    <Route path="*" element={<Dashboard />} />
+                <Route path="/Main" element={<App />}>
+                    <Route path="" element={<SuburbSelectingPage />} />
+                    <Route path="*" element={<SuburbSelectingPage />} />
+                    <Route path="Dashboard/:suburb" element={<Dashboard />} />
                     <Route path="Report" element={<Report />} />
                 </Route>
                 <Route path="/" element={<Login />} />
