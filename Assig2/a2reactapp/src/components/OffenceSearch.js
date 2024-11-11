@@ -23,8 +23,13 @@ function OffenceSearch({ suburb }) {
         <div id="offenceSearch">
             <form method="post" action="/Dashboard" onSubmit={onSubmit}>
                 <div className="text-center fw-bold fs-4">Advanced Search</div>
-                <div className="text-muted mt-4 fw-bold fs-5">
+                <div className="text-center text-muted fs-6">Continue your search by providing some searching criteria as below...</div>
+                <div className="d-flex justify-content-between text-muted mt-4 fw-bold fs-5">
                     Find an MPDC location via...
+                    <div>
+                        <span>Current suburb: </span>
+                        <span className="text-decoration-underline">{suburb}</span>
+                    </div>
                 </div>
                 <hr />
 
