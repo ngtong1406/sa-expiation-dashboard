@@ -16,7 +16,7 @@ function RegisterSection() {
 
     if (registerStatus === true) {
         alert("You have successfully registered an account. You're now logged in!");
-        window.location.href = '/Dashboard';
+        window.location.href = '/Main';
     }
 
     function searchUserNameAndPassword() {
