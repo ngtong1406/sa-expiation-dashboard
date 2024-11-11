@@ -7,6 +7,7 @@ import TypeCodeRadio from './TypeCodeRadio';
 function OffenceSearch() {
     const [cameraList, setList] = useState([]);
     const [suburb, setSuburb] = useState('');
+    const [offenceDescription, setDescription] = useState('');
 
     /*
     The code below is just an example table that serves testing purposes and is meant to show what the 
@@ -32,8 +33,14 @@ function OffenceSearch() {
 
         const form = e.target;
         const formData = new FormData(form);
+
         let suburb = formData.get('suburb');
         setSuburb(suburb);
+        console.log(suburb);
+
+        let description = formData.get('descriptionSearch')
+        setDescription(description);
+        console.log(description);
     }
 
     return (
