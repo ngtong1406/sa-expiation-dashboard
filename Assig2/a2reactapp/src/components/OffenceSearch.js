@@ -1,8 +1,8 @@
 ﻿import { useEffect, useState } from 'react';
-import SuburbDropdown from "../components/SuburbDropdown";
 import DescriptionSearch from './DescriptionSearchbox';
 import ExpiationDatePicker from './ExpiationDatePicker';
 import TypeCodeRadio from './TypeCodeRadio';
+import ListCameraDropdown from './ListCameraDropdown';
 
 function OffenceSearch() {
     const [cameraList, setList] = useState([]);
@@ -45,7 +45,7 @@ function OffenceSearch() {
                         providing a related suburb:
                     </div>
                     <div className="col-8 mb-3">
-                        <SuburbDropdown />
+                        <ListCameraDropdown />
                     </div>
 
                     <div className="col-4 mb-3">
