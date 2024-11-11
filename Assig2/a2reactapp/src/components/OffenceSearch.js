@@ -1,4 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import DescriptionSearch from './DescriptionSearchbox';
 import ExpiationDatePicker from './ExpiationDatePicker';
 import TypeCodeRadio from './TypeCodeRadio';
@@ -63,7 +65,10 @@ function OffenceSearch({ suburb }) {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary">Search</button>
+                <div className="d-flex justify-content-between align-middle">
+                    <Link to="/Main" className="btn btn-dark">Change Suburb</Link>
+                    <button type="submit" className="btn btn-primary">Search</button>
+                </div>
             </form>
 
             {/**/}{/*
