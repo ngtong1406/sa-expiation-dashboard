@@ -18,7 +18,7 @@ export default function DescriptionSearch() {
             {offenceList.length > 0 ? 
                 <datalist id="offenceSuggestions">
                     {offenceList.map((offence) => (
-                        <option value={offence.description}>{offence.description}</option>
+                        <option key={offence.offenceCode} value={offence.description}>{offence.description}</option>
                     ))}
                 </datalist>
             : <></>}
