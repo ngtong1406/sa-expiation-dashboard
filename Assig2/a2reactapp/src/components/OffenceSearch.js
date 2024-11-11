@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+﻿import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import DescriptionSearch from './DescriptionSearchbox';
@@ -9,12 +9,6 @@ import ListCameraDropdown from './ListCameraDropdown';
 function OffenceSearch({ suburb }) {
 
     const [expiationList, setList] = useState([]);
-
-    //const [offenceDescription, setDescription] = useState('');
-    //const [cameraLocationId, setLocationId] = useState(0);
-    //const [startDate, setStartDate] = useState(0);
-    //const [endDate, setEndDate] = useState(2147483647); // 2147483647 is the maximum integer value of Int32 (C#)
-    //const [cameraTypeCode, setTypeCode] = useState('');
 
     // Code from: Ashik N. (2023)
     // Source link: https://nesin.io/blog/javascript-date-to-unix-timestamp
