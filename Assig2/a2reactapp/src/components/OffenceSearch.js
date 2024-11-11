@@ -18,8 +18,10 @@ function OffenceSearch({ suburb }) {
 
     // Code from: Ashik N. (2023)
     // Source link: https://nesin.io/blog/javascript-date-to-unix-timestamp
-    function convertDateToUnixTime(dateTime) {
-        if (!dateTime) { return 0 }
+    function convertDateToUnixTime(dateTime, isEndDate = false) {
+        if (!dateTime) {
+            return (isEndDate ? 2147483647 : 0)
+        }
 
         const currentDate = new Date(dateTime);
 
@@ -41,7 +43,7 @@ function OffenceSearch({ suburb }) {
         let startDate = convertDateToUnixTime(formData.get('startDate'));
         console.log(startDate);
 
-        let endDate = convertDateToUnixTime(formData.get('endDate'));
+        let endDate = convertDateToUnixTime(formData.get('endDate'), true);
         console.log(endDate);
 
         let cameraType = formData.get('typeCode');
