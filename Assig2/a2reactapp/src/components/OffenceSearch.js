@@ -11,6 +11,7 @@ import ResultTypeDropdown from './ResultTypeDropdown';
 function OffenceSearch({ suburb }) {
 
     const [expiationList, setList] = useState([]);
+    const [expiationStats, setStats] = useState([]);
 
     // Coding solution adapted from: Ashik N. (2023)
     // Reference link: https://nesin.io/blog/javascript-date-to-unix-timestamp
@@ -52,9 +53,23 @@ function OffenceSearch({ suburb }) {
             .then(expResponse => { return expResponse.json() })
             .then(data => {
                 setList(data);
-                console.log(data);
             })
             .catch(err => { console.log("Could not retrieve expiation data: " + err) })
+    }
+
+    function fetchExpiationStats(description, locationId, startDate, endDate, cameraType) {
+        fetch(`http://localhost:5147/api/Get_SearchOffencesByDescription?searchTerm=${description}&offenceCodesOnly=true`)
+            .then(offenceResponse => { return offenceResponse.json() })
+            .then(data => {
+                let offenceUrl = (description.length > 0 ? offenceListToParameters(data) : "");
+
+                return fetch(`http://localhost:5147/api/Get_ExpiationStatsForLocationId?locationId=${locationId}&cameraTypeCode=${cameraType}&startTime=${startDate}&endTime=${endDate}&${offenceUrl}`);
+            })
+            .then(expResponse => { return expResponse.json() })
+            .then(data => {
+                setStats(data);
+            })
+            .catch(err => { console.log("Could not retrieve expiation stats: " + err) })
     }
 
     function onSubmit(e) {
@@ -63,13 +78,20 @@ function OffenceSearch({ suburb }) {
         const form = e.target;
         const formData = new FormData(form);
 
+        let resultType = formData.get('resultType');
+
         let description = formData.get('descriptionSearch');
         let locationId = formData.get('locationId');
         let startDate = convertDateToUnixTime(formData.get('startDate'));
         let endDate = convertDateToUnixTime(formData.get('endDate'), true);
         let cameraType = formData.get('typeCode');
 
-        fetchExpiationList(description, locationId, startDate, endDate, cameraType)
+        if (resultType === "expiationList") {
+            fetchExpiationList(description, locationId, startDate, endDate, cameraType);
+        } else if (resultType === "expiationStats") {
+            fetchExpiationStats(description, locationId, startDate, endDate, cameraType);
+        }
+        
     }
 
     return (
