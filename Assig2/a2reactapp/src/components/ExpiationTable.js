@@ -9,11 +9,7 @@ export default function ExpiationTable({ expiationList }) {
 
         choices.forEach(choice => {
             choice.checked = false;
-
-            // Set all the button 'disabled' state to normal.
-            document.querySelectorAll('[name="dataSelection"]').forEach((button) => {
-                button.disabled = false;
-            })
+            choice.disabled = false;
 
             document.querySelector('[name="reportButton"]').hidden = true;
 
