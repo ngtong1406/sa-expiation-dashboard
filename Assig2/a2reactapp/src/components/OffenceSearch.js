@@ -6,6 +6,7 @@ import ExpiationDatePicker from './ExpiationDatePicker';
 import TypeCodeRadio from './TypeCodeRadio';
 import ListCameraDropdown from './ListCameraDropdown';
 import ExpiationTable from './ExpiationTable';
+import ResultTypeDropdown from './ResultTypeDropdown';
 
 function OffenceSearch({ suburb }) {
 
@@ -90,6 +91,13 @@ function OffenceSearch({ suburb }) {
                 <hr />
 
                 <div className="row row-cols-2">
+                    <div className="col-4 mb-3">
+                        selecting which type of results you want to see (<span className="text-danger fw-bold">*</span>):
+                    </div>
+                    <div className="col-8 mb-3">
+                        <ResultTypeDropdown />
+                    </div>
+
                     <div className="col-4 mb-3">
                         searching for an offence description:
                     </div>
