@@ -39,29 +39,13 @@ function OffenceSearch({ suburb }) {
         return finalString;
     }
 
-    function onSubmit(e) {
-        e.preventDefault();
-
-        const form = e.target;
-        const formData = new FormData(form);
-
-        let description = formData.get('descriptionSearch');
-        let offenceUrl = '';
-
+    function fetchExpiationList(description, locationId, startDate, endDate, cameraType) {
         // This is a chaining fetch call, which is an optimised version of the nested fetch requests from the old code.
         // The solution was found on StackOverFlow: https://stackoverflow.com/questions/40981040/using-a-fetch-inside-another-fetch-in-javascript
         fetch(`http://localhost:5147/api/Get_SearchOffencesByDescription?searchTerm=${description}&offenceCodesOnly=true`)
             .then(offenceResponse => { return offenceResponse.json() })
             .then(data => {
-                offenceUrl = (description.length > 0 ? offenceListToParameters(data) : "");
-
-                let locationId = formData.get('locationId');
-
-                let startDate = convertDateToUnixTime(formData.get('startDate'));
-
-                let endDate = convertDateToUnixTime(formData.get('endDate'), true);
-
-                let cameraType = formData.get('typeCode');
+                let offenceUrl = (description.length > 0 ? offenceListToParameters(data) : "");
 
                 return fetch(`http://localhost:5147/api/Get_ExpiationsForLocationId?locationId=${locationId}&cameraTypeCode=${cameraType}&startTime=${startDate}&endTime=${endDate}&${offenceUrl}`);
             })
@@ -71,6 +55,21 @@ function OffenceSearch({ suburb }) {
                 console.log(data);
             })
             .catch(err => { console.log("Could not retrieve expiation data: " + err) })
+    }
+
+    function onSubmit(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        let description = formData.get('descriptionSearch');
+        let locationId = formData.get('locationId');
+        let startDate = convertDateToUnixTime(formData.get('startDate'));
+        let endDate = convertDateToUnixTime(formData.get('endDate'), true);
+        let cameraType = formData.get('typeCode');
+
+        fetchExpiationList(description, locationId, startDate, endDate, cameraType)
     }
 
     return (
