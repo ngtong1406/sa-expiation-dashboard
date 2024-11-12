@@ -12,12 +12,16 @@ export default function ExpiationTable({ expiationList }) {
         }
 
         if (expIdList.length < 2) {
+
+            // Set all the button 'disabled' state to normal.
             document.querySelectorAll('.form-check-input.border.border-dark-subtle').forEach((button) => {
                 button.disabled = false;
             })
 
             document.querySelector('[name="reportButton"]').hidden = true;
         } else {
+
+            // Disable all the other buttons when two are selected.
             document.querySelectorAll('.form-check-input.border.border-dark-subtle').forEach((button) => {
                 if (!expIdList.includes(button.value)) {
                     button.disabled = true;
