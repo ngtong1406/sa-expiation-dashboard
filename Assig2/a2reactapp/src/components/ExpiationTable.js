@@ -44,6 +44,11 @@ export default function ExpiationTable({ expiationList }) {
                         {expiationList.length} matching {expiationList.length > 1 ? "results" : "result"} found...
                     </div>
 
+                    <div className="d-flex justify-content-center align-middle gap-3 mt-3 mb-3">
+                        <button type="button" className="btn btn-outline-dark">Clear Choices</button>
+                        <Link name="reportButton" to="/Main/Report" className="btn btn-dark" hidden>Generate A Report</Link>
+                    </div>
+
                     <div className="bg-light rounded border border-secondary-subtle shadow-sm p-4 mt-3 mb-3">
                         <div class="accordion" id="expiationAccordion">
                             {expiationList.map((exp) => (
@@ -62,7 +67,7 @@ export default function ExpiationTable({ expiationList }) {
                                                     <label class="btn btn-outline-dark" for={"dataSelection" + exp.expId}>Choose this offence</label>
                                                 </div>
                                             </div>
-                                            
+
                                             <hr />
 
                                             <div className="row">
@@ -117,10 +122,6 @@ export default function ExpiationTable({ expiationList }) {
                                 </div>
                             ))}
                         </div>
-                    </div>
-
-                    <div className="d-flex justify-content-end align-middle mt-3 mb-3">
-                        <Link name="reportButton" to="/Main/Report" className="btn btn-success" hidden>Generate a report</Link>
                     </div>
                 </>
             )}
