@@ -210,7 +210,11 @@ namespace Assig2.Controllers.API
             {
                 offencesEnum = offencesEnum.Where(i => offenceCodes.Contains(i.OffenceCode));
             }
-//thanks Casey
+
+            // New changes - Add another line to order the results.
+            offencesEnum = offencesEnum.OrderBy(i => i.IncidentStartDate).ThenBy(i => i.IncidentStartTime);
+
+            //thanks Casey
             return await Task.FromResult(offencesEnum.ToList());
         }
 
