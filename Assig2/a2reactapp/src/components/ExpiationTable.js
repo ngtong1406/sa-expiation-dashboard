@@ -54,7 +54,7 @@ export default function ExpiationTable({ expiationList }) {
             ) : (
                 <>
                     <div className="text-center text-muted mt-4">
-                        {expiationList.length} matching {expiationList.length > 1 ? "results" : "result"} found...
+                        <strong>{expiationList.length}</strong> matching {expiationList.length > 1 ? "results" : "result"} found. Choose <strong>TWO</strong> records to generate a report.
                     </div>
 
                     <div className="d-flex justify-content-center align-middle gap-3 mt-3 mb-3">
