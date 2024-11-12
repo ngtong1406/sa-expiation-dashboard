@@ -14,6 +14,7 @@
                         <table className="table">
                             <thead className="table-dark">
                                 <tr>
+                                    <th></th>
                                     <th>Offence Code</th>
                                     <th>Incident Start Date</th>
                                     <th>Incident Start Time</th>
@@ -31,6 +32,9 @@
                             <tbody>
                                 {expiationList.map((exp) => (
                                     <tr key={exp.expId}>
+                                        <td>
+                                            <input class="form-check-input border border-dark-subtle" name="dataSelection" type="checkbox" value={exp.expId} id={"dataSelection" + exp.expId} />
+                                        </td>
                                         <th>{exp.offenceCode}</th>
                                         <td>{exp.incidentStartDate}</td>
                                         <td>{exp.incidentStartTime}</td>
