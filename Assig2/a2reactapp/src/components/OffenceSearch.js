@@ -12,7 +12,7 @@ import ExpiationStats from './ExpiationStats';
 function OffenceSearch({ suburb }) {
 
     const [expiationList, setList] = useState([]);
-    const [expiationStats, setStats] = useState([]);
+    const [expiationStats, setStats] = useState({});
 
     // Coding solution adapted from: Ashik N. (2023)
     // Reference link: https://nesin.io/blog/javascript-date-to-unix-timestamp
@@ -39,6 +39,12 @@ function OffenceSearch({ suburb }) {
         });
 
         return finalString;
+    }
+
+    // Coding solution obtained from mikemaccana (2021) on StackOverFlow.
+    // Reference link: https://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object
+    function isEmpty(obj) {
+        return Object.keys(obj).length === 0;
     }
 
     function fetchExpiationList(description, locationId, startDate, endDate, cameraType) {
@@ -69,6 +75,7 @@ function OffenceSearch({ suburb }) {
             .then(expResponse => { return expResponse.json() })
             .then(data => {
                 setStats(data);
+                console.log(typeof data.expiationDaysOfWeek)
             })
             .catch(err => { console.log("Could not retrieve expiation stats: " + err) })
     }
@@ -159,7 +166,7 @@ function OffenceSearch({ suburb }) {
                 <ExpiationTable expiationList={expiationList} />
             </> : <></>}
 
-            {expiationStats.length > 0 ? <>
+            {!isEmpty(expiationStats) ? <>
                 <ExpiationStats expiationStats={expiationStats} />
             </> : <></>}
             
