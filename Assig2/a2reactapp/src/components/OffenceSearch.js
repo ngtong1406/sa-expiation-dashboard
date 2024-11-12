@@ -154,7 +154,10 @@ function OffenceSearch({ suburb }) {
                 </div>
             </form>
 
-            <ExpiationTable expiationList={expiationList} />
+            {expiationList.length > 0 ? <>
+                <ExpiationTable expiationList={expiationList} />
+            </> : <></>}
+            
         </div>
     );
 }
