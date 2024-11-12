@@ -7,6 +7,7 @@ import TypeCodeRadio from './filters/TypeCodeRadio';
 import ListCameraDropdown from './filters/ListCameraDropdown';
 import ExpiationTable from './ExpiationTable';
 import ResultTypeDropdown from './filters/ResultTypeDropdown';
+import ExpiationStats from './ExpiationStats';
 
 function OffenceSearch({ suburb }) {
 
@@ -156,6 +157,10 @@ function OffenceSearch({ suburb }) {
 
             {expiationList.length > 0 ? <>
                 <ExpiationTable expiationList={expiationList} />
+            </> : <></>}
+
+            {expiationStats.length > 0 ? <>
+                <ExpiationStats expiationStats={expiationStats} />
             </> : <></>}
             
         </div>
