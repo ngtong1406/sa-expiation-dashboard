@@ -4,47 +4,6 @@ import { Link } from 'react-router-dom';
 export default function ExpiationTable({ expiationList }) {
     let expIdList = [];
 
-    function clearChoices() {
-        const choices = document.querySelectorAll('[name="dataSelection"]');
-
-        choices.forEach(choice => {
-            choice.checked = false;
-            choice.disabled = false;
-
-            document.querySelector('[name="reportButton"]').hidden = true;
-
-            expIdList.splice(0, expIdList.length);
-        });
-    }
-
-    function onSelect(e) {
-        if (e.target.checked == true) {
-            expIdList.push(e.target.value);
-        } else {
-            expIdList.splice(expIdList.indexOf(e.target.value), 1);
-        }
-
-        if (expIdList.length < 2) {
-
-            // Set all the button 'disabled' state to normal.
-            document.querySelectorAll('[name="dataSelection"]').forEach((button) => {
-                button.disabled = false;
-            })
-
-            document.querySelector('[name="reportButton"]').hidden = true;
-        } else {
-
-            // Disable all the other buttons when two are selected.
-            document.querySelectorAll('[name="dataSelection"]').forEach((button) => {
-                if (!expIdList.includes(button.value)) {
-                    button.disabled = true;
-                }
-            })
-
-            document.querySelector('[name="reportButton"]').hidden = false;
-        }
-    }
-
     return (
         <>
             {expiationList.length <= 0 ? (
@@ -54,12 +13,7 @@ export default function ExpiationTable({ expiationList }) {
             ) : (
                 <>
                     <div className="text-center text-muted mt-4">
-                        <strong>{expiationList.length}</strong> matching {expiationList.length > 1 ? "results" : "result"} found. Choose <strong>TWO</strong> records to generate a report.
-                    </div>
-
-                    <div className="d-flex justify-content-center align-middle gap-3 mt-3 mb-3">
-                        <button type="button" className="btn btn-outline-dark" onClick={clearChoices}>Clear Choices</button>
-                        <Link name="reportButton" to="/Main/Report" className="btn btn-dark" hidden>Generate A Report</Link>
+                        Found <strong>{expiationList.length}</strong> matching {expiationList.length > 1 ? "results" : "result"}.
                     </div>
 
                     <div className="bg-light rounded border border-secondary-subtle shadow-sm p-4 mt-3 mb-3">
@@ -73,13 +27,7 @@ export default function ExpiationTable({ expiationList }) {
                                     </h2>
                                     <div id={exp.expId} class="accordion-collapse collapse">
                                         <div class="accordion-body">
-                                            <div className="d-flex justify-content-between align-bottom gap-3">
-                                                <h4 className="fw-bold">Offence Summary</h4>
-                                                <div>
-                                                    <input onClick={onSelect} class="btn-check" autoComplete="off" name="dataSelection" type="checkbox" value={exp.expId} id={"dataSelection" + exp.expId} />
-                                                    <label class="btn btn-outline-dark" for={"dataSelection" + exp.expId}>Choose this offence</label>
-                                                </div>
-                                            </div>
+                                            <h4 className="fw-bold">Offence Summary</h4>
 
                                             <hr />
 
