@@ -14,7 +14,7 @@ export default function ExpiationTable({ expiationList }) {
         if (expIdList.length < 2) {
 
             // Set all the button 'disabled' state to normal.
-            document.querySelectorAll('.form-check-input.border.border-dark-subtle').forEach((button) => {
+            document.querySelectorAll('[name="dataSelection"]').forEach((button) => {
                 button.disabled = false;
             })
 
@@ -22,7 +22,7 @@ export default function ExpiationTable({ expiationList }) {
         } else {
 
             // Disable all the other buttons when two are selected.
-            document.querySelectorAll('.form-check-input.border.border-dark-subtle').forEach((button) => {
+            document.querySelectorAll('[name="dataSelection"]').forEach((button) => {
                 if (!expIdList.includes(button.value)) {
                     button.disabled = true;
                 }
@@ -44,43 +44,79 @@ export default function ExpiationTable({ expiationList }) {
                         {expiationList.length} matching {expiationList.length > 1 ? "results" : "result"} found...
                     </div>
 
-                    <div className="table-responsive bg-white rounded border border-secondary-subtle shadow-sm mt-3 p-3 overflow-y-scroll" style={{ height: '50vh' }}>
-                        <table className="table">
-                            <thead className="table-dark">
-                                <tr>
-                                    <th></th>
-                                    <th>Offence Code</th>
-                                    <th>Incident Start Date</th>
-                                    <th>Incident Start Time</th>
-                                    <th>Issue Date</th>
-                                    <th>Total Fee Amount</th>
-                                    <th>Vehicle Speed (km/h)</th>
-                                    <th>Location Speed Limit (km/h)</th>
-                                    <th>Registration State</th>
-                                    <th>Local Service Area</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {expiationList.map((exp) => (
-                                    <tr key={exp.expId}>
-                                        <td>
-                                            <input onClick={onSelect} class="form-check-input border border-dark-subtle" name="dataSelection" type="checkbox" value={exp.expId} id={"dataSelection" + exp.expId} />
-                                        </td>
-                                        <th>{exp.offenceCode}</th>
-                                        <td>{exp.incidentStartDate}</td>
-                                        <td>{exp.incidentStartTime}</td>
-                                        <td>{exp.issueDate}</td>
-                                        <td>$ {exp.totalFeeAmt != null ? exp.totalFeeAmt : "0.0"}</td>
-                                        <td>{exp.vehicleSpeed}</td>
-                                        <td>{exp.locationSpeedLimit}</td>
-                                        <td>{exp.regState}</td>
-                                        <td>{exp.lsaCode}</td>
-                                        <td>{exp.statusCode}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                    <div className="bg-light rounded border border-secondary-subtle shadow-sm p-4 mt-3 mb-3">
+                        <div class="accordion" id="expiationAccordion">
+                            {expiationList.map((exp) => (
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#" + exp.expId} aria-expanded="false" aria-controls={exp.expId}>
+                                            [<span className="fw-bold">{exp.expId}</span>] - Offence Code: {exp.offenceCode ? exp.offenceCode : "None"} - Incident Date: {exp.incidentStartDate} at {exp.incidentStartTime} - [{exp.statusCode}]
+                                        </button>
+                                    </h2>
+                                    <div id={exp.expId} class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            <div className="d-flex justify-content-between align-bottom gap-3">
+                                                <h4 className="fw-bold">Offence Summary</h4>
+                                                <div>
+                                                    <input onClick={onSelect} class="btn-check" autoComplete="off" name="dataSelection" type="checkbox" value={exp.expId} id={"dataSelection" + exp.expId} />
+                                                    <label class="btn btn-outline-dark" for={"dataSelection" + exp.expId}>Choose this offence</label>
+                                                </div>
+                                            </div>
+                                            
+                                            <hr />
+
+                                            <div className="row">
+                                                <div className="col-sm-2 fw-semibold">Expiation ID:</div>
+                                                <div className="col-sm-10">{exp.expId}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Offence Code:</div>
+                                                <div className="col-sm-10">{exp.offenceCode}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Incident Time:</div>
+                                                <div className="col-sm-10">{exp.incidentStartDate} at {exp.incidentStartTime}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Issued Date:</div>
+                                                <div className="col-sm-10">{exp.issueDate}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Vehicle Speed (km/h):</div>
+                                                <div className="col-sm-10">{exp.vehicleSpeed}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Location Speed Limit:</div>
+                                                <div className="col-sm-10">{exp.locationSpeedLimit}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Driver State:</div>
+                                                <div className="col-sm-10">{exp.driverState}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Registration State:</div>
+                                                <div className="col-sm-10">{exp.regState}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Local Service Area:</div>
+                                                <div className="col-sm-10">{exp.lsaCode}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Status:</div>
+                                                <div className="col-sm-10">{exp.statusCode}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Enforce Warning Fee:</div>
+                                                <div className="col-sm-10">$ {exp.enforceWarningNoticeFeeAmt}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Penalty Amount:</div>
+                                                <div className="col-sm-10">$ {exp.offencePenaltyAmt}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Levy Amount:</div>
+                                                <div className="col-sm-10">$ {exp.offenceLevyAmt}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Corporate Amount:</div>
+                                                <div className="col-sm-10">$ {exp.corporateFeeAmt}</div>
+
+                                                <div className="col-sm-2 fw-semibold">Total Fee Amount:</div>
+                                                <div className="col-sm-10">$ {exp.totalFeeAmt}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="d-flex justify-content-end align-middle mt-3 mb-3">
