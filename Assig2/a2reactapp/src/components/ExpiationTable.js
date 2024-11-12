@@ -4,6 +4,23 @@ import { Link } from 'react-router-dom';
 export default function ExpiationTable({ expiationList }) {
     let expIdList = [];
 
+    function clearChoices() {
+        const choices = document.querySelectorAll('[name="dataSelection"]');
+
+        choices.forEach(choice => {
+            choice.checked = false;
+
+            // Set all the button 'disabled' state to normal.
+            document.querySelectorAll('[name="dataSelection"]').forEach((button) => {
+                button.disabled = false;
+            })
+
+            document.querySelector('[name="reportButton"]').hidden = true;
+
+            expIdList.splice(0, expIdList.length);
+        });
+    }
+
     function onSelect(e) {
         if (e.target.checked == true) {
             expIdList.push(e.target.value);
@@ -45,7 +62,7 @@ export default function ExpiationTable({ expiationList }) {
                     </div>
 
                     <div className="d-flex justify-content-center align-middle gap-3 mt-3 mb-3">
-                        <button type="button" className="btn btn-outline-dark">Clear Choices</button>
+                        <button type="button" className="btn btn-outline-dark" onClick={clearChoices}>Clear Choices</button>
                         <Link name="reportButton" to="/Main/Report" className="btn btn-dark" hidden>Generate A Report</Link>
                     </div>
 
