@@ -1,4 +1,33 @@
-﻿export default function ExpiationTable({ expiationList }) {
+﻿import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+export default function ExpiationTable({ expiationList }) {
+    let expIdList = [];
+
+    function onSelect(e) {
+        if (e.target.checked == true) {
+            expIdList.push(e.target.value);
+        } else {
+            expIdList.splice(expIdList.indexOf(e.target.value), 1);
+        }
+
+        if (expIdList.length < 2) {
+            document.querySelectorAll('.form-check-input.border.border-dark-subtle').forEach((button) => {
+                button.disabled = false;
+            })
+
+            document.querySelector('[name="reportButton"]').hidden = true;
+        } else {
+            document.querySelectorAll('.form-check-input.border.border-dark-subtle').forEach((button) => {
+                if (!expIdList.includes(button.value)) {
+                    button.disabled = true;
+                }
+            })
+
+            document.querySelector('[name="reportButton"]').hidden = false;
+        }
+    }
+
     return (
         <>
             {expiationList.length <= 0 ? (
@@ -10,6 +39,7 @@
                     <div className="text-center text-muted mt-4">
                         {expiationList.length} matching {expiationList.length > 1 ? "results" : "result"} found...
                     </div>
+
                     <div className="table-responsive bg-white rounded border border-secondary-subtle shadow-sm mt-3 p-3 overflow-y-scroll" style={{ height: '50vh' }}>
                         <table className="table">
                             <thead className="table-dark">
@@ -24,8 +54,6 @@
                                     <th>Location Speed Limit (km/h)</th>
                                     <th>Registration State</th>
                                     <th>Local Service Area</th>
-                                    <th>Camera Location ID</th>
-                                    <th>Camera Type</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -33,7 +61,7 @@
                                 {expiationList.map((exp) => (
                                     <tr key={exp.expId}>
                                         <td>
-                                            <input class="form-check-input border border-dark-subtle" name="dataSelection" type="checkbox" value={exp.expId} id={"dataSelection" + exp.expId} />
+                                            <input onClick={onSelect} class="form-check-input border border-dark-subtle" name="dataSelection" type="checkbox" value={exp.expId} id={"dataSelection" + exp.expId} />
                                         </td>
                                         <th>{exp.offenceCode}</th>
                                         <td>{exp.incidentStartDate}</td>
@@ -44,13 +72,15 @@
                                         <td>{exp.locationSpeedLimit}</td>
                                         <td>{exp.regState}</td>
                                         <td>{exp.lsaCode}</td>
-                                        <td>{exp.cameraLocationId}</td>
-                                        <td>{exp.cameraTypeCode}</td>
                                         <td>{exp.statusCode}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+
+                    <div className="d-flex justify-content-end align-middle mt-3 mb-3">
+                        <Link name="reportButton" to="/Main/Report" className="btn btn-success" hidden>Generate a report</Link>
                     </div>
                 </>
             )}
