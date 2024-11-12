@@ -11,8 +11,8 @@
                         {expiationList.length} matching {expiationList.length > 1 ? "results" : "result"} found...
                     </div>
                     <div className="table-responsive bg-white rounded border border-secondary-subtle shadow-sm mt-3 p-3 overflow-y-scroll" style={{ height: '50vh' }}>
-                        <table class="table">
-                            <thead class="table-dark">
+                        <table className="table">
+                            <thead className="table-dark">
                                 <tr>
                                     <th>Offence Code</th>
                                     <th>Incident Start Date</th>
@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                                 {expiationList.map((exp) => (
-                                    <tr>
+                                    <tr key={exp.expId}>
                                         <th>{exp.offenceCode}</th>
                                         <td>{exp.incidentStartDate}</td>
                                         <td>{exp.incidentStartTime}</td>
