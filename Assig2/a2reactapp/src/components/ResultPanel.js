@@ -24,12 +24,18 @@ export default function ResultPanel({ expiationList, expiationStats }) {
 
             <div className="tab-content" id="resultPanelContent">
                 <div className="tab-pane fade show active p-3" id="expListPane" role="tabpanel" aria-labelledby="list-tab" tabIndex="0">
-                    <ExpiationTable expiationList={expiationList} />
+                    {expiationList.length > 0 ? <>
+                        <ExpiationTable expiationList={expiationList} />
+                    </> : <>
+                        <p className="text-muted text-center mt-4">No matching records found.</p>
+                    </>}
                 </div>
                 <div className="tab-pane fade p-3" id="expStatsPane" role="tabpanel" aria-labelledby="stats-tab" tabIndex="0">
                     {!isEmpty(expiationStats) ? <>
                         <ExpiationStats expiationStats={expiationStats} />
-                    </> : <></>}
+                    </> : <>
+                        <p className="text-muted text-center mt-4">No matching records found.</p>
+                    </>}
                 </div>
             </div>
         </div>
