@@ -4,13 +4,12 @@ import { useEffect } from "react";
 export default function InsightChart({ data }) {
 
     useEffect(() => {
-        //const container = d3.select('#statsContainer');
 
-        const margin = { top: 20, right: 30, bottom: 50, left: 50 };
-        const width = 1230;
+        const margin = { top: 20, right: 50, bottom: 50, left: 50 };
+        const width = 1200;
         const height = 600;
 
-        const svg = d3.select('#insightChart')
+        const svg = d3.select('svg#insightChart')
             .attr('width', width)
             .attr('height', height);
 
