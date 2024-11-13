@@ -1,6 +1,10 @@
 ﻿import InsightChart from './charts/InsightChart';
 
 export default function ExpiationStats({ expiationStats }) {
+    function convertUnixTimeToDate(unixTime) {
+        return (new Date(unixTime * 1000)).toLocaleDateString('en-AU');
+    }
+
     return (
         <div className="mt-4 mb-4">
             <h3 className="text-center fw-bold mb-3">Highlights</h3>
@@ -10,16 +14,16 @@ export default function ExpiationStats({ expiationStats }) {
                 <div className="col-4">
                     <div className="card border-secondary text-center mb-4">
                         <div className="card-body">
-                            <h5 className="card-title text-muted">First Expiation ID</h5>
-                            <p className="card-text fw-semibold fs-4">{expiationStats.firstExpiationInSet}</p>
+                            <h5 className="card-title text-muted">First Expiation</h5>
+                            <p className="card-text fw-semibold fs-4">{convertUnixTimeToDate(expiationStats.firstExpiationInSet)}</p>
                         </div>
                     </div>
                 </div>
                 <div className="col-4">
                     <div className="card border-secondary text-center mb-4">
                         <div className="card-body">
-                            <h5 className="card-title text-muted">Last Expiation ID</h5>
-                            <p className="card-text fw-semibold fs-4">{expiationStats.lastExpiationInSet}</p>
+                            <h5 className="card-title text-muted">Last Expiation</h5>
+                            <p className="card-text fw-semibold fs-4">{convertUnixTimeToDate(expiationStats.lastExpiationInSet)}</p>
                         </div>
                     </div>
                 </div>
