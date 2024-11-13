@@ -74,7 +74,7 @@ export default function ExpiationStats({ expiationStats }) {
 
             <div className="row">
                 <div className="col-12">
-                    <InsightChart expiationStats={expiationStats} />
+                    <InsightChart data={expiationStats.expiationDaysOfWeek} />
                 </div>
             </div>
         </div>
