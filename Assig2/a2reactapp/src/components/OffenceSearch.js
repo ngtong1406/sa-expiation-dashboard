@@ -41,9 +41,11 @@ function OffenceSearch({ suburb }) {
         return finalString;
     }
 
-    // Coding solution obtained from mikemaccana (2021) on StackOverFlow.
+    // Coding solution adapted from mikemaccana (2021) on StackOverFlow.
     // Reference link: https://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object
     function isEmpty(obj) {
+        if (obj.totalOffencesCount === 0) { return true; }
+
         return Object.keys(obj).length === 0;
     }
 
