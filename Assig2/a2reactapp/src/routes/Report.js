@@ -1,10 +1,39 @@
-﻿import fullarton from '../assets/fullarton.png'
+﻿import { useEffect, useState } from 'react';
+
+import fullarton from '../assets/fullarton.png'
 import fullarton_chart from '../assets/fullarton_chart.png'
 import hindleyst_westterrace from '../assets/hindleyst_westterrace.png'
 import hindleyst_westterrace_chart from '../assets/hindleyst_westterrace_chart.png'
 import search_filters_used from '../assets/search_filters_used.png'
+import StackedBarChart from '../components/charts/StackedBarChart'
 
 function Report() {
+
+    const locationId1 = 65;
+    const locationId2 = 658;
+
+    const [expStats1, setFirstStats] = useState({});
+    const [expStats2, setSecondStats] = useState({});
+    function isEmpty(obj) {
+        if (obj.totalOffencesCount === 0) { return true; }
+
+        return Object.keys(obj).length === 0;
+    }
+
+    useEffect(() => {
+        fetch(`http://localhost:5147/api/Get_ExpiationStatsForLocationId?locationId=65&cameraTypeCode=M&startTime=0&endTime=2147483647`)
+            .then(response => { return response.json() })
+            .then(data => { setFirstStats(data); })
+            .catch(err => { console.log("An error occurred while retrieving the first expiation stats: " + err) })
+    }, [])
+
+    useEffect(() => {
+        fetch(`http://localhost:5147/api/Get_ExpiationStatsForLocationId?locationId=658&cameraTypeCode=M&startTime=0&endTime=2147483647`)
+            .then(response => { return response.json() })
+            .then(data => { setSecondStats(data); })
+            .catch(err => { console.log("An error occurred while retrieving the second expiation stats: " + err) })
+    }, [])
+
     return (
         <div className="container mt-4 mb-4">
             <div className="bg-white border border-secondary-subtle p-4">
@@ -49,15 +78,17 @@ function Report() {
                 <h2>Method</h2>
                 <p className="fw-semibold mb-0">Filters and Search Options Used</p>
                 <p>To identify the above two high-priority locations, several filters were applied in the dashboard analysis. First, a drop-down list was used to filter by location’s name, which allows for targeted analysis of specific areas. Next, a radio selection was employed to choose camera type codes, focusing on locations monitored by mobile cameras to ensure it is suitable for the MPDC installation. Other available filters as seen in <i>Figure 5</i>, such as a search box for offence type descriptions and a date picker for selecting the start and end date of incidents were not utilised in this particular selection. The reasoning is because focusing on location and camera type, particularly mobile cameras (M), facilitates the discovery of the above two sites with high offence records and significant daily fee and demerit averages, which suggest persistent non-compliance behaviours related to mobile use while driving. These filtered metrics were used to highlight the most optimal sites for MPDC services.</p>
-                <div class="row row-cols-1 justify-content-center mt-3 mb-3">
-                    <div class="col-8">
+                <div className="row row-cols-1 justify-content-center mt-3 mb-3">
+                    <div className="col-8">
                         <img src={search_filters_used} alt="A screenshot of the search filters, with ones that were used in the selection" className="border border-secondary" style={{ width: "100%" }} />
                         <small>Figure 5: A screenshot of the search filters, with ones that were used in the selection..</small>
                     </div>
                 </div>
 
                 <h2>D3 Visualisations</h2>
-                <p>...</p>
+                {!isEmpty(expStats1) && !isEmpty(expStats2) ? <>
+                    <StackedBarChart dataSet1={expStats1.expiationDaysOfWeek} dataSet2={expStats2.expiationDaysOfWeek} />
+                </> : <></>}
 
                 <h2>Discussion</h2>
                 <p className="fw-semibold mb-0">Considerations around the locations</p>
