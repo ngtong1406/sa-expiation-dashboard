@@ -5,9 +5,7 @@ import DescriptionSearch from './filters/DescriptionSearchbox';
 import ExpiationDatePicker from './filters/ExpiationDatePicker';
 import TypeCodeRadio from './filters/TypeCodeRadio';
 import ListCameraDropdown from './filters/ListCameraDropdown';
-import ExpiationTable from './ExpiationTable';
-import ResultTypeDropdown from './filters/ResultTypeDropdown';
-import ExpiationStats from './ExpiationStats';
+import ResultPanel from './ResultPanel';
 
 function OffenceSearch({ suburb }) {
 
@@ -39,14 +37,6 @@ function OffenceSearch({ suburb }) {
         });
 
         return finalString;
-    }
-
-    // Coding solution adapted from mikemaccana (2021) on StackOverFlow.
-    // Reference link: https://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object
-    function isEmpty(obj) {
-        if (obj.totalOffencesCount === 0) { return true; }
-
-        return Object.keys(obj).length === 0;
     }
 
     function fetchExpiationList(description, locationId, startDate, endDate, cameraType) {
@@ -97,12 +87,9 @@ function OffenceSearch({ suburb }) {
         let endDate = convertDateToUnixTime(formData.get('endDate'), true);
         let cameraType = formData.get('typeCode');
 
-        if (resultType === "expiationList") {
-            fetchExpiationList(description, locationId, startDate, endDate, cameraType);
-        } else if (resultType === "expiationStats") {
-            fetchExpiationStats(description, locationId, startDate, endDate, cameraType);
-        }
-        
+        fetchExpiationList(description, locationId, startDate, endDate, cameraType);
+        fetchExpiationStats(description, locationId, startDate, endDate, cameraType);
+
     }
 
     return (
@@ -123,13 +110,6 @@ function OffenceSearch({ suburb }) {
                 <hr />
 
                 <div className="row row-cols-2">
-                    <div className="col-4 mb-3">
-                        selecting which type of results you want to see (<span className="text-danger fw-bold">*</span>):
-                    </div>
-                    <div className="col-8 mb-3">
-                        <ResultTypeDropdown />
-                    </div>
-
                     <div className="col-4 mb-3">
                         searching for an offence description:
                     </div>
@@ -165,14 +145,8 @@ function OffenceSearch({ suburb }) {
                 </div>
             </form>
 
-            {expiationList.length > 0 ? <>
-                <ExpiationTable expiationList={expiationList} />
-            </> : <></>}
+            <ResultPanel expiationList={expiationList} expiationStats={expiationStats} />
 
-            {!isEmpty(expiationStats) ? <>
-                <ExpiationStats expiationStats={expiationStats} />
-            </> : <></>}
-            
         </div>
     );
 }
