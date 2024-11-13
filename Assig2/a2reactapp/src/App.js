@@ -39,6 +39,9 @@ function App() {
                                     <Link className="nav-link active" to="/Main" onClick={makeActive}>Homepage</Link>
                                 </li>
                                 <li className="nav-item">
+                                    <Link className="nav-link" to="/Main/Dashboard" onClick={makeActive}>Dashboard</Link>
+                                </li>
+                                <li className="nav-item">
                                     <Link className="nav-link" to="/Main/Report" onClick={makeActive}>Report</Link>
                                 </li>
                             </ul>
