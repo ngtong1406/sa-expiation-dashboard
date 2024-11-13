@@ -11,6 +11,7 @@ function OffenceSearch({ suburb }) {
 
     const [expiationList, setList] = useState([]);
     const [expiationStats, setStats] = useState({});
+    const [hasSubmitted, setSubmissionState] = useState(false);
 
     // Coding solution adapted from: Ashik N. (2023)
     // Reference link: https://nesin.io/blog/javascript-date-to-unix-timestamp
@@ -73,6 +74,7 @@ function OffenceSearch({ suburb }) {
 
     function onSubmit(e) {
         e.preventDefault();
+        setSubmissionState(true);
 
         const form = e.target;
         const formData = new FormData(form);
@@ -143,7 +145,9 @@ function OffenceSearch({ suburb }) {
                 </div>
             </form>
 
-            <ResultPanel expiationList={expiationList} expiationStats={expiationStats} />
+            {hasSubmitted ? <>
+                <ResultPanel expiationList={expiationList} expiationStats={expiationStats} />
+            </> : <></>}
 
         </div>
     );
