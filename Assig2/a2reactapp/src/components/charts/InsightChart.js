@@ -69,7 +69,7 @@ export default function InsightChart({ data }) {
     }, [data])
 
     return (
-        <div className="bg-white rounded border border-secondary mt-3 mb-3 p-3">
+        <div id="statsContainer" className="bg-white rounded border border-secondary mt-3 mb-3 p-3">
             <svg id="insightChart"></svg>
         </div>
     )

@@ -2,7 +2,7 @@
 
 export default function ExpiationStats({ expiationStats }) {
     return (
-        <div id="statsContainer" className="mt-4 mb-4">
+        <div className="mt-4 mb-4">
             <h3 className="text-center fw-bold mb-3">Highlights</h3>
             <p className="text-center text-muted">The cards below describe the key highlights about the current search criteria.</p>
 
