@@ -52,7 +52,6 @@ function OffenceSearch({ suburb }) {
             .then(expResponse => { return expResponse.json() })
             .then(data => {
                 setList(data);
-                setStats([]); // Reset the other list so that they won't be shown at the same time.
             })
             .catch(err => { console.log("Could not retrieve expiation data: " + err) })
     }
@@ -68,7 +67,6 @@ function OffenceSearch({ suburb }) {
             .then(expResponse => { return expResponse.json() })
             .then(data => {
                 setStats(data);
-                setList([]); // Reset the other list so that they won't be shown at the same time.
             })
             .catch(err => { console.log("Could not retrieve expiation stats: " + err) })
     }

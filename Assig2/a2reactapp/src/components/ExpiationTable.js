@@ -9,7 +9,7 @@
             <div className="bg-light rounded border border-secondary-subtle shadow-sm p-4 mt-3 mb-3">
                 <div className="accordion" id="expiationAccordion">
                     {expiationList.map((exp) => (
-                        <div className="accordion-item">
+                        <div key={exp.expId} className="accordion-item">
                             <h2 className="accordion-header">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#" + exp.expId} aria-expanded="false" aria-controls={exp.expId}>
                                     [<span className="fw-bold">{exp.expId}</span>] - Offence Code: {exp.offenceCode ? exp.offenceCode : "None"} - Incident Date: {exp.incidentStartDate} at {exp.incidentStartTime} - [{exp.statusCode}]
