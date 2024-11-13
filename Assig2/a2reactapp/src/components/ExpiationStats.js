@@ -4,8 +4,9 @@ export default function ExpiationStats({ expiationStats }) {
     return (
         <div id="statsContainer" className="mt-4 mb-4">
             <h3 className="text-center fw-bold mb-3">Highlights</h3>
+            <p className="text-center">The cards below describe the key highlights about the current search criteria.</p>
 
-            <div className="row">
+            <div className="row mt-4">
                 <div className="col-4">
                     <div className="card border-secondary text-center mb-4">
                         <div className="card-body">
@@ -71,6 +72,7 @@ export default function ExpiationStats({ expiationStats }) {
             </div>
 
             <h3 className="text-center fw-bold mt-4 mb-3">Insights</h3>
+            <p className="text-center">The chart below describes the total number of offences (<strong>{expiationStats.totalOffencesCount}</strong>) distributed over the weekdays.</p>
 
             <div className="row">
                 <div className="col-12">
