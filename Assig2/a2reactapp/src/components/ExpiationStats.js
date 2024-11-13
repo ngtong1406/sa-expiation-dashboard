@@ -1,6 +1,8 @@
-﻿export default function ExpiationStats({ expiationStats }) {
+﻿import InsightChart from './charts/InsightChart';
+
+export default function ExpiationStats({ expiationStats }) {
     return (
-        <div className="mt-4 mb-4">
+        <div id="statsContainer" className="mt-4 mb-4">
             <h3 className="text-center fw-bold mb-3">Highlights</h3>
 
             <div className="row">
@@ -72,30 +74,7 @@
 
             <div className="row">
                 <div className="col-12">
-                    <div className="card border-secondary">
-                        <div className="card-header">
-                            <h5>Expiation Days of Week</h5>
-                        </div>
-                        <div className="card-body">
-                            <table className="table table-striped caption-top">
-                                <caption>Total offences distributed over the weeks.</caption>
-                                <thead className="table-light">
-                                    <tr>
-                                        <th>Weekday</th>
-                                        <th>Number of Offences</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {Object.keys(expiationStats.expiationDaysOfWeek).map((entry) => (
-                                        <tr key={entry}>
-                                            <td>{entry}</td>
-                                            <td>{expiationStats.expiationDaysOfWeek[entry]}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <InsightChart expiationStats={expiationStats} />
                 </div>
             </div>
         </div>
