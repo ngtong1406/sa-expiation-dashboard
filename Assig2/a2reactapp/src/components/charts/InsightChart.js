@@ -1,7 +1,7 @@
 ﻿import * as d3 from "d3";
 import { useEffect } from "react";
 
-export default function InsightChart({ data }) {
+export default function InsightChart({ data, id }) {
 
     useEffect(() => {
 
@@ -9,7 +9,7 @@ export default function InsightChart({ data }) {
         const width = 1200;
         const height = 600;
 
-        const svg = d3.select('svg#insightChart')
+        const svg = d3.select("#insightChart" + id)
             .attr('width', width)
             .attr('height', height);
 
@@ -69,7 +69,7 @@ export default function InsightChart({ data }) {
 
     return (
         <div id="statsContainer" className="bg-white rounded border border-secondary mt-3 mb-3 p-3">
-            <svg id="insightChart"></svg>
+            <svg id={"insightChart" + id}></svg>
         </div>
     )
 }

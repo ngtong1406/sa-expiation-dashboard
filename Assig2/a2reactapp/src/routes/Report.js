@@ -5,7 +5,7 @@ import fullarton_chart from '../assets/fullarton_chart.png'
 import hindleyst_westterrace from '../assets/hindleyst_westterrace.png'
 import hindleyst_westterrace_chart from '../assets/hindleyst_westterrace_chart.png'
 import search_filters_used from '../assets/search_filters_used.png'
-import StackedBarChart from '../components/charts/StackedBarChart'
+import InsightChart from '../components/charts/InsightChart'
 
 function Report() {
 
@@ -47,31 +47,22 @@ function Report() {
                 <h1>Body Content</h1>
                 <h2>Data Analysis</h2>
 
-                <p className="fw-semibold mb-0">First site: Fullarton</p>
-                <p><i>Figure 1</i> shows the area of the first site, namely Fullarton, which is identified through a thorough review of expiation data, with offences recorded between January 28, 2024, and June 30, 2024. Over this short period, the site reported a total of 52 offences, leading to a substantial $31,012 in fines and accumulating 113 demerit points. Particularly, the average fee per day at this site is $2,701.26, with an average of 9.84 demerit points per day, which indicates consistent violations at a very high rate. A closer look at offence distribution graph as shown in the below figure (<i>Figure 2</i>) suggests that the violations mostly occurred on Tuesdays with 21 offences and Saturdays with 31 offences. This pattern implies that these specific days may experience increased traffic volumes or specific traffic events, hence leading to increased cases of non-compliance. Overall, this site’s high offence and fee rates make it an ideal candidate for camera installation due to the recurring violations, which suggest that intervention is necessary to prevent the continuing unlawful behaviours.</p>
                 <div className="row row-cols-2 mb-3">
                     <div className="col">
-                        <img src={fullarton} alt="A screenshot of Fullarton's area on Google Maps" className="border border-secondary" style={{width: "100%"}} />
+                        <img src={fullarton} alt="A screenshot of Fullarton's area on Google Maps" className="border border-secondary" style={{ width: "100%", height: "50vh", objectFit: "contain" }} />
                         <small>Figure 1: A screenshot of Fullarton's area on Google Maps.</small>
                     </div>
                     <div className="col">
-                        <img src={fullarton_chart} alt="A screenshot of Fullarton's insight chart" className="border border-secondary" style={{ width: "100%" }} />
-                        <small>Figure 2: A screenshot of Fullarton's insight chart.</small>
+                        <img src={hindleyst_westterrace} alt="A screenshot of West Terrace/Hindley Street's area on Google Maps" className="border border-secondary" style={{ width: "100%", height: "50vh", objectFit: "contain" }} /> <br />
+                        <small>Figure 2: A screenshot of West Terrace/Hindley Street's area on Google Maps.</small>
                     </div>
                 </div>
 
+                <p className="fw-semibold mb-0">First site: Fullarton</p>
+                <p><i>Figure 1</i> shows the area of the first site, namely Fullarton, which is identified through a thorough review of expiation data, with offences recorded between January 28, 2024, and June 30, 2024. Over this short period, the site reported a total of 52 offences, leading to a substantial $31,012 in fines and accumulating 113 demerit points. Particularly, the average fee per day at this site is $2,701.26, with an average of 9.84 demerit points per day, which indicates consistent violations at a very high rate. A closer look at offence distribution graph as shown in the below figure (<i>Figure 3</i>) suggests that the violations mostly occurred on Tuesdays with 21 offences and Saturdays with 31 offences. This pattern implies that these specific days may experience increased traffic volumes or specific traffic events, hence leading to increased cases of non-compliance. Overall, this site’s high offence and fee rates make it an ideal candidate for camera installation due to the recurring violations, which suggest that intervention is necessary to prevent the continuing unlawful behaviours.</p>
+
                 <p className="fw-semibold mb-0">Second site: West Terrace/Hindley Street</p>
-                <p>The second site, West Terrace/Hindley Street, as seen in <i>Figure 3</i> has a wider data range from January 28, 2024, to June 30, 2024, which shows a more consistent trend over several months. During this period, the site reported 55 offences, with $32,513 in total fines and 98 demerit points. Despite the lower average fee per day at the second site, which is $211.26 per day, the sustained frequency of offences over a long period suggests that non-compliance has been a persistent issue rather than a short-term spike. The average demerit points per day at the second site are lower than the first one, with 0.64 points per day, indicating that individual offences may be less severe but are steadily accumulated. Hence, this points out a lack of adherence to traffic regulations over time in this area. </p>
-                <div className="row row-cols-2 mb-3">
-                    <div className="col">
-                        <img src={hindleyst_westterrace} alt="A screenshot of West Terrace/Hindley Street's area on Google Maps" className="border border-secondary" style={{ width: "100%" }} />
-                        <small>Figure 3: A screenshot of West Terrace/Hindley Street's area on Google Maps.</small>
-                    </div>
-                    <div className="col">
-                        <img src={hindleyst_westterrace_chart} alt="A screenshot of West Terrace/Hindley Street's insight chart" className="border border-secondary" style={{ width: "100%" }} />
-                        <small>Figure 4: A screenshot of West Terrace/Hindley Street's insight chart.</small>
-                    </div>
-                </div>
+                <p>The second site, West Terrace/Hindley Street, as seen in <i>Figure 2</i> has a wider data range from January 28, 2024, to June 30, 2024, which shows a more consistent trend over several months. During this period, the site reported 55 offences, with $32,513 in total fines and 98 demerit points. Despite the lower average fee per day at the second site, which is $211.26 per day, the sustained frequency of offences over a long period suggests that non-compliance has been a persistent issue rather than a short-term spike. The average demerit points per day at the second site are lower than the first one, with 0.64 points per day, indicating that individual offences may be less severe but are steadily accumulated. Hence, this points out a lack of adherence to traffic regulations over time in this area. </p>
                 <p>According to <i>Figure 4</i>, the distribution of offences across the weekdays provides further insight into driving behaviour at this location. Sundays report the highest number of offences, with 20 cases, which indicate a peak in non-compliance on weekends. Similarly, Fridays and Saturdays also show increased violation, with 12 and 7 offences, respectively. In contrast, mid-weekdays such as Wednesday report no offences, whereas Monday, Tuesday, and Thursday show somewhat low numbers, respectively 8, 4, and 4 cases. This pattern of weekend peaks suggests a more relaxed attitude to traffic rules among drivers during these times, highlighting the need for monitoring on these high-risk days.</p>
                 <p>Overall, the above findings indicate that the second site’s offence rates and a significant spike during weekends make it an appropriate candidate for MPDC installation. Having suitable monitoring equipment at this area, especially weekends, addresses the issue of non-compliance, hence improving the safety at this site over the long term.</p>
 
@@ -87,12 +78,18 @@ function Report() {
 
                 <h2>D3 Visualisations</h2>
                 {!isEmpty(expStats1) && !isEmpty(expStats2) ? <>
-                    <StackedBarChart dataSet1={expStats1.expiationDaysOfWeek} dataSet2={expStats2.expiationDaysOfWeek} />
+                    <InsightChart data={expStats2.expiationDaysOfWeek} id="658" />
+                    <small>Figure 3: A D3 data visualisation of the first site's offences distributed over the weekdays.</small>
+
+                    <br className="mb-4" />
+
+                    <InsightChart data={expStats1.expiationDaysOfWeek} id="65" />
+                    <small>Figure 4: A D3 data visualisation of the second site's offences distributed over the weekdays.</small>
                 </> : <></>}
 
-                <h2>Discussion</h2>
+                <h2 className="mt-3">Discussion</h2>
                 <p className="fw-semibold mb-0">Considerations around the locations</p>
-                <p>Apart from the above-mentioned statistical analysis, several considerations assisted in selecting the two locations. Both sites West Terrace/Hindley Street and Fullarton are either positioned at or have intersections that frequently experience heavy traffic flow. Several factors such as road design, namely lane merges, sharp turns, and limited visibility at these sites, usually contribute to the high offence rates. Hence, mobile camera setup can help address these design challenges by preventing risky driving behaviours, specifically using mobile phones while driving, that can become life-threatening by confusing road layouts. In addition, both sites have adequate physical space for camera installations, as visible in <i>Figure 1</i> and <i>Figure 3</i>, without impacting the regular traffic flow, which ensures that this traffic solution will not lead to newer traffic issues.</p>
+                <p>Apart from the above-mentioned statistical analysis, several considerations assisted in selecting the two locations. Both sites West Terrace/Hindley Street and Fullarton are either positioned at or have intersections that frequently experience heavy traffic flow. Several factors such as road design, namely lane merges, sharp turns, and limited visibility at these sites, usually contribute to the high offence rates. Hence, mobile camera setup can help address these design challenges by preventing risky driving behaviours, specifically using mobile phones while driving, that can become life-threatening by confusing road layouts. In addition, both sites have adequate physical space for camera installations, as visible in <i>Figure 1</i> and <i>Figure 2</i>, without impacting the regular traffic flow, which ensures that this traffic solution will not lead to newer traffic issues.</p>
                 <p>The presence of mobile cameras could play a preventative role not only in reducing offences related to driving mobile users, but also in lowering the possibility of severe accidents. With the first site, its peak violation days may suggest the need for targeted camera operations on Tuesdays and Saturdays, whereas the second site, with its long-term violation pattern, is suitable for continuous monitoring to impact the long-term driving behaviours.</p>
 
                 <h1>Conclusion</h1>
