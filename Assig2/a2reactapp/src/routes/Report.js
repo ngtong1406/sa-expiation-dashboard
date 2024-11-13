@@ -77,6 +77,7 @@ function Report() {
                 </div>
 
                 <h2>D3 Visualisations</h2>
+                <p>To further support this analysis, several D3 graphs were constructed to help visualise the data.</p>
                 {!isEmpty(expStats1) && !isEmpty(expStats2) ? <>
                     <InsightChart data={expStats2.expiationDaysOfWeek} id="658" />
                     <small>Figure 3: A D3 data visualisation of the first site's offences distributed over the weekdays.</small>
@@ -86,6 +87,7 @@ function Report() {
                     <InsightChart data={expStats1.expiationDaysOfWeek} id="65" />
                     <small>Figure 4: A D3 data visualisation of the second site's offences distributed over the weekdays.</small>
                 </> : <></>}
+                <p className="mt-3">The above two graphs, two bar charts of <strong>offences by day of the week</strong>, clearly illustrate the concentration of violations at both sites over the weekdays. These visualisations highlight the importance of targeted interventions and monitoring on specific days, which maximises MPDCs’ effectiveness at times when they would have maximum impact.</p>
 
                 <h2 className="mt-3">Discussion</h2>
                 <p className="fw-semibold mb-0">Considerations around the locations</p>
