@@ -18,6 +18,7 @@ root.render(
                 <Route path="/Main" element={<App />}>
                     <Route path="" element={<SuburbSelectingPage />} />
                     <Route path="*" element={<SuburbSelectingPage />} />
+                    <Route path="Dashboard" element={<Dashboard />} />
                     <Route path="Dashboard/:suburb" element={<Dashboard />} />
                     <Route path="Report" element={<Report />} />
                 </Route>
